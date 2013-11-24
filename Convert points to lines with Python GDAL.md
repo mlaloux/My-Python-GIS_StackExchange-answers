@@ -1,4 +1,4 @@
-From [Convert points to lines with Python GDAL]
+From [Convert points to lines with Python GDAL](http://gis.stackexchange.com/questions/78275/convert-points-to-lines-with-python-gdal)
 
 
 Why not work globally ?
