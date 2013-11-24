@@ -67,34 +67,7 @@ http://pymotw.com/2/xml/etree/ElementTree/parse.html#finding-nodes-in-a-document
 
 
   [1]: https://pypi.python.org/pypi/Shapely/1.2.17
-And in addition to the reply of sgillies, if you want the wkt format (wkt = "" ?), use his [Shapely][1] module:
 
-
-    from shapely.geometry.polygon import LinearRing
-
-    linearing = []
-    for polygon in geography.findall('{http://www.opengis.net/gml}Polygon'):
-         for coord in polygon.findall("{http://www.opengis.net/gml}outerBoundaryIs/{http://www.opengis.net/gml}LinearRing/{http://www.opengis.net/gml}coord"):
-             linearing.append((float(coord.findtext("{http://www.opengis.net/gml}X")),float(coord.findtext("{http://www.opengis.net/gml}Y"))))
-
-    print LinearRing(a).wkt
-    'LINEARRING (452847.6009000000194646 18596.0495999999984633, 415847.6009000000194646 184596.0495999999984633, 415847.6009000000194646 184596.0495999999984633, 452847.6009000000194646 18596.0495999999984633, 415847.6009000000194646 184596.0495999999984633, 415847.6009000000194646 184596.0495999999984633, 452847.6009000000194646 18596.0495999999984633)'
-
-or with the two outerBoundaryIs: 
-
-    for outerBoundaryIs in geography.findall('{http://www.opengis.net/gml}Polygon/{http://www.opengis.net/gml}outerBoundaryIs'):
-        linearing = []
-        for coord in outerBoundaryIs.findall("{http://www.opengis.net/gml}LinearRing/{http://www.opengis.net/gml}coord"):
-            linearing.append((float(coord.findtext("{http://www.opengis.net/gml}X")),float(coord.findtext("{http://www.opengis.net/gml}Y"))))         
-        print LinearRing(linearing).wkt
-
-    'LINEARRING (452847.6009000000194646 18596.0495999999984633, 415847.6009000000194646 184596.0495999999984633, 415847.6009000000194646 184596.0495999999984633, 452847.6009000000194646 18596.0495999999984633)'
-    'LINEARRING (452847.6009000000194646 18596.0495999999984633, 415847.6009000000194646 184596.0495999999984633, 415847.6009000000194646 184596.0495999999984633, 452847.6009000000194646 18596.0495999999984633)'
-
-and if you want the srsName of the polygon:
-
-    for polygon in geography.findall('{http://www.opengis.net/gml}Polygon'):
-        polygon.attrib.get('srsName') 
 
   
 
