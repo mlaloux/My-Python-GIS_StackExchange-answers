@@ -6,7 +6,7 @@ I return to this issue because it is very similar to [How do I find vector line 
 
 One can find lots of scripts by searching Haversine distance with Python on the Internet and I choose one of them in [Haversine Formula in Python (Bearing and Distance between two GPS points)][2]
 
-<!-- language: lang-py -->
+```python
     
     def haversine(lon1, lat1, lon2, lat2):
         """
@@ -22,20 +22,22 @@ One can find lots of scripts by searching Haversine distance with Python on the 
         c = 2 * math.asin(math.sqrt(a)) 
         km = 6367 * c
         return km
+```
 
 We have a series of lines (points) in the file that must be treated in pairs (point1 - point2) to calculate the distance. For this we will use a simple iterator from [Most pythonic way to get the previous element][3]
 
-<!-- language: lang-py -->
+```python
 
     def offset(iterable):
         prev = None
         for elem in iterable:
             yield prev, elem
             prev = elem
+```
 
 Now it is possible to read the file (example of Kerrie) in pairs of lines/points
 
-<!-- language: lang-py -->
+```python
 
     import csv
     with open('testhavers.csv', 'rb') as f:
@@ -50,10 +52,12 @@ Now it is possible to read the file (example of Kerrie) in pairs of lines/points
      {'LAT': '10.08526', 'LON': '124.59832', 'ID': '3', 'TIME': '21:25:37'})
      ({'LAT': '10.08526', 'LON': '124.59832', 'ID': '3', 'TIME': '21:25:37'}, 
      {'LAT':    '10.08526', 'LON': '124.59831', 'ID': '4', 'TIME': '21:26:07'})
+     
+```
 
 Then create a shapefile containing the original fields of the csv file and a new field for the distance with the Python modules Shapely and Fiona of Sean Gillies:
 
-<!-- language: lang-py -->
+```python
 
     import fiona
     from shapely.geometry import Point, mapping
@@ -78,6 +82,7 @@ Then create a shapefile containing the original fields of the csv file and a new
                     dist = haversine(float(pair[0]['LON']), float(pair[0]['LAT']), float(pair[1]['LON']),float(pair[1]['LAT']))
                     output.write({'properties': {'ID':int(pair[1]['ID']),'LAT':float(pair[1]['LAT']),'LON':float(pair[1]['LON']), 'TIME':pair[1]['TIME'],'distance': dist},'geometry': mapping(point)})
 
+```
 and the result:
 ![enter image description here][4]
 
