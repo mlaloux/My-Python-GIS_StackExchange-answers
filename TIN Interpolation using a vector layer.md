@@ -1,5 +1,4 @@
-From [How to use Z-Coordinate in QGIS?](http://gis.stackexchange.com/questions/43342/how-to-use-z-coordinate-in-qgis)
-
+From [TIN Interpolation using a vector layer](http://gis.stackexchange.com/questions/41891/tin-interpolation-using-a-vector-layer)
 
 see [Is there are QGIS plugin to allow the 3d visualisation of geological borehole data similar to the functionality of Target for ArcGIS?][1] for my solution in Python with the modules Matplotlib and [Visvis][2]
 
