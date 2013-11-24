@@ -1,6 +1,7 @@
 From [How to get field names in pyqgis 2.0](http://gis.stackexchange.com/questions/76364/how-to-get-field-names-in-pyqgis-2-0)
 
 It is simpler than with version 1.8:
+
 ```python
     layer = qgis.utils.iface.activeLayer()  
     fields = layer.pendingFields()   
@@ -8,10 +9,12 @@ It is simpler than with version 1.8:
 ```
 
 or in one line
+
 ```python
     field_names = [field.name() for field in layer.pendingFields() ]
 ```
 an after   
+
 ```python
 
     for elem in layer.getFeatures():  
@@ -24,14 +27,12 @@ an after
 Generally to explore a new function, I use the dir()  or the [see][1] module to examine what's inside:
 
 ```python
-
     dir(fields)
     ['FieldOrigin', 'OriginEdit', 'OriginJoin', 'OriginProvider', 'OriginUnknown', '__class__', '__delattr__', '__delitem__', '__dict__', '__doc__', '__format__', '__getattribute__', '__getitem__', '__hash__', '__init__', '__len__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setitem__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'append', 'at', 'clear', 'count', 'extend', 'field', 'fieldOrigin', 'fieldOriginIndex', 'indexFromName', 'isEmpty', 'remove', 'size', 'toList']
 ```  
 or 
 
 ```python
-
     see(fields)
     []                 hash()             help()             len()
     repr()             str()              .FieldOrigin()     .OriginEdit
