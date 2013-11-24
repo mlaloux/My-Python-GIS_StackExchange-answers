@@ -14,6 +14,7 @@ With a SQLite layer (not spatial)
     vlayer.isValid()
     True
 ```
+
 ![enter image description here][1]
 
 If you want a spatial layer (Spatialite), you must indicate the geometry column:
@@ -27,7 +28,7 @@ If you want a spatial layer (Spatialite), you must indicate the geometry column:
     QgsMapLayerRegistry.instance().addMapLayer(vlayer)
     vlayer.isValid()
     True
-```python
+```
 
 ![enter image description here][3]
 
