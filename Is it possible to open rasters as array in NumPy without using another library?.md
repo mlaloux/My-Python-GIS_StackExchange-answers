@@ -1,4 +1,3 @@
-
 from [Is it possible to open rasters as array in NumPy without using another library?](http://gis.stackexchange.com/questions/76919/is-it-possible-to-open-rasters-as-array-in-numpy-without-using-another-library)
 
 
@@ -74,7 +73,7 @@ But you have no information about the georeferencing parameters of the raster
     geotransform = raster.GetGeoTransform()
     print geotransform
     (162012.67788132755, 1.00078911763392, 0.0, 108172.86938540942, 0.0, -1.00078911763392)
-```python
+```
 
 
 
