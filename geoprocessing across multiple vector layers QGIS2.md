@@ -1,3 +1,7 @@
+From [geoprocessing across multiple vector layers QGIS2](http://gis.stackexchange.com/questions/77974/how-to-convert-gml-to-geojson-using-python-and-ogr-with-geometry-transformation/77999)
+
+
+
 It is possible in Python, pure Python without QGIS with modules such as [Fiona][1], [Pyshp][2], [shapely][3] with [rtree][4] (see [rtree python polygon index][5]) and with PyQGIS. 
 
 ###The problem: 6 points layers and an unique grid:
@@ -8,27 +12,25 @@ It is possible in Python, pure Python without QGIS with modules such as [Fiona][
 
 1) Using a spatial index for the grid (see Using Spatial Index in [Using Vector Layers][7], [Using a QGIS spatial index to speed up your code ][8] or [How to do a spatial search without select() using PyQGIS?][9]):
 
-<!-- language: lang-py -->
 
-
+```python
     grid = iface.activeLayer()
     index = QgsSpatialIndex() 
     for elem in grid.getFeatures():
          index.insertFeature(elem)
+```
 
 or more "Pythonic"
 
-<!-- language: lang-py -->
-
+```python
     index = QgsSpatialIndex() 
     map(index.insertFeature, grid.getFeatures())
+```
 
 
 2) Creation of a dictionary to collect the results (index of the grid squares where there are points inside and layers) and a function to complete it:
 
-<!-- language: lang-py -->
-
-
+```python
     results = {}
     # fonction to find the indexes of the grid squares inside which a point lies.
     def mydict(layer, dictionary):
@@ -36,11 +38,11 @@ or more "Pythonic"
             geom = elem.geometry().asPoint()
             nearestIds = index.nearestNeighbor(geom,1)
             results.setdefault(str(nearestIds[0]), set()).add(layer.name())
+```
 
 3) Iteration over point layers and application of the function:
 
-<!-- language: lang-py -->
-
+```python
     canvas= qgis.utils.iface.mapCanvas()
     for layer in canvas.layers():
         elem = layer.getFeatures().next()
@@ -48,11 +50,11 @@ or more "Pythonic"
         # only points layers
         if geom.wkbType() == QGis.WKBPoint:
              mydict(layer, results)
+```
 
 The result is a dictionary with the grid squares spatial index as key and the layers which have points in the square grid as values:
 
-<!-- language: lang-py -->
-
+```python
     print results
     {'11': set([u'point1', u'point3', u'point4']),
      '10': set([u'point5']),
@@ -70,18 +72,20 @@ The result is a dictionary with the grid squares spatial index as key and the la
       '6': set([u'point1', u'point3']), 
       '9': set([u'point3']), 
       '8': set([u'point1', u'point2'])}
+```
 
 If you want to preserve the order of the indexes, you can use an [OrderedDict][10]
 
 4) And if you only want the grid squares with six years of data:
 
-<!-- language: lang-py -->
+```python
 
     for index_gridsquare, layers in results.iteritems():
         if len(values) == 6:
              print index_gridsquare,": ", values
     14: set([u'point1', u'point2', u'point3', u'point4', u'point5', u'point6'])
     0 : set([u'point1', u'point2', u'point3', u'point4', u'point5', u'point6'])
+```
 
 
 ##After that, I do not understand if you want to select:
