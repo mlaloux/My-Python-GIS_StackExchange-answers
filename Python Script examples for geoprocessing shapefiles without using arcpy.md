@@ -58,13 +58,13 @@ and if you use shapely in addition:
                output.write(id + ' ' + x + ' ' + y+ ' ' + cover + '\n')
 ```
 
-**There is also two  books: 
+There are also two books: 
 
 [Python Geospatial Development][22] of Eric Westra.
 
 ![enter image description here][23]
 
-[Learning Geospatial Analysis with Python][27] of Joel Lawhead**
+[Learning Geospatial Analysis with Python][27] of Joel Lawhead
 
 ![enter image description here][28]
         
