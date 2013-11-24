@@ -1,4 +1,3 @@
-
 from [How to store attributes of a large shapefile in a list?](http://gis.stackexchange.com/questions/61935/how-to-store-attributes-of-a-large-shapefile-in-a-list/61968)
 
 
