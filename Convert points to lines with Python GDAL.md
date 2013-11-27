@@ -35,7 +35,7 @@ With ogr (look at [the Python GDAL/OGR Cookbook!][3]):
 
     point = ogr.Geometry(ogr.wkbPoint)
     point.AddPoint(x,y)
-    distance =  point1.distance(point2)
+    distance =  point1.Distance(point2)
     line = ogr.Geometry(ogr.wkbLineString) 
         line.AddPoint(x1, y1)
         ....
@@ -79,7 +79,7 @@ or using [Fiona][4] (an easier Python wrapper of the ogr library)
     # schema of the shapefile
     schema = {'geometry': 'MultiLineString','properties': {'test': 'int'}
     with fiona.open('myshp3.shp','w','ESRI Shapefile', schema) as c:
-           record =  = {'geometry':mapping(line), 'properties':{'test':1}}
+           record = {'geometry':mapping(line), 'properties':{'test':1}}
            c.write(record)
 ```
 Result:
