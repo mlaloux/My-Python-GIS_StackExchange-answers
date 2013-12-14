@@ -35,7 +35,7 @@ rectangular grid
 ```
 ![enter image description here][4]
 
-For other types of grids change the value in runalg (1,...,3, ...):
+For other types of grids change the value in runalg (0,1,2,3 = Rectangle (line), Rectangle (polygon), Diamond (polygon), Hexagon (polygon)):
 
 Hexagonal grid
 
