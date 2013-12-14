@@ -85,7 +85,11 @@ and if you don't understand xmin,ymin,xmax,ymax = layer.extent().toRectF().getCo
     xmin,ymin,xmax,ymax = layer.extent().toRectF().getCoords()
 ```
 
-and to go faster, you can even use the gridding functions of numpy or use the Python modules  [shapely][5] and [Fiona][6] without QGIS:
+and to go faster, you can even use the gridding functions of numpy 
+
+### no published
+
+or use the Python modules  [shapely][5] and [Fiona][6] without QGIS:
 
 ```python
 
