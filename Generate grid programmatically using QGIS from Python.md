@@ -1,8 +1,48 @@
-You can adapt the script of [ustroetz][1] in [Create a square grid polygon shapefile with python][2]
+From an existing layer:
+
+![enter image description here][1]
+
+###1) you can use "qgis:creategrid" in Processing as in the "Hex grid from layer bounds" in Scripts/Example scripts. (look at [Processing-Help / qgis / creategrid.rst][2])
+
+rectangular grid
+  
+```python
+
+    ##[Example scripts]=group
+    ##input=vector
+    ##cellsize=number 1000.0
+    ##grid=output vector
+    input = processing.getobject(input)
+    centerx = (input.extent().xMinimum() + input.extent().xMaximum()) / 2
+    centery = (input.extent().yMinimum() + input.extent().yMaximum()) / 2
+    width = (input.extent().xMaximum() - input.extent().xMinimum())
+    height = (input.extent().yMaximum() - input.extent().yMinimum())
+    processing.runalg("qgis:creategrid", cellsize, cellsize, width, height, centerx, centery, 1, input.crs().authid(), grid)
+    
+```
+
+![enter image description here][3]
+
+For other types of grids change the value in runalg (1,...,3, ...):
+
+Hexagonal grid
+
+```python
+
+    ....
+    processing.runalg("qgis:creategrid", cellsize, cellsize, width, height, centerx, centery, 3, input.crs().authid(), grid)
+    
+```
+
+![enter image description here][4]
+
+###2) You can adapt the script of [ustroetz][5] in [Create a square grid polygon shapefile with python][6]
+
 
 part of my class to create a memory layer limited here to the geometry of Polygons:
 
 ```python
+
     class Crea_layer(object):
         def __init__(self,name,type):
             self.type=type
@@ -19,9 +59,8 @@ part of my class to create a memory layer limited here to the geometry of Polygo
             QgsMapLayerRegistry.instance().addMapLayers([self.layer])
 ```
 
-The script to create a squared grid layer from an existing layer:
 
-![enter image description here][3]
+The script to create a squared grid layer from an existing layer:
 
 ```python
 
@@ -52,13 +91,13 @@ The script to create a squared grid layer from an existing layer:
         ringXrightOrigin = ringXrightOrigin + gridWidth
 
     pol.disp_layer
-    
 ```
 
      
 Result:
 
-![enter image description here][4]
+![enter image description here][7]
+
 
 But you can modify the script using numpy in place of math ceil and int
 
@@ -121,9 +160,10 @@ or use the Python modules  [shapely][5] and [Fiona][6] without QGIS:
  ```
 
 
-  [1]: http://gis.stackexchange.com/users/15607/ustroetz
-  [2]: http://gis.stackexchange.com/questions/54119/create-a-square-grid-polygon-shapefile-with-python/78030#78030
-  [3]: http://i.stack.imgur.com/13iuc.jpg
-  [4]: http://i.stack.imgur.com/3Ei8L.jpg
-  [5]: http://gispython.org/shapely/manual.html
-  [6]: http://toblerity.github.com/fiona/manual
+ [1]: http://i.stack.imgur.com/13iuc.jpg
+  [2]: https://github.com/alexbruy/Processing-Help/blob/master/qgis/creategrid.rst
+  [3]: http://i.stack.imgur.com/w0Z6F.jpg
+  [4]: http://i.stack.imgur.com/SbLuu.jpg
+  [5]: http://gis.stackexchange.com/users/15607/ustroetz
+  [6]: http://gis.stackexchange.com/questions/54119/create-a-square-grid-polygon-shapefile-with-python/78030#78030
+  [7]: http://i.stack.imgur.com/U825j.jpg
