@@ -2,7 +2,7 @@ From an existing layer:
 
 ![enter image description here][1]
 
-###1) you can use "qgis:creategrid" in Processing as in the "Hex grid from layer bounds" in Scripts/Example scripts. (look at [Processing-Help / qgis / creategrid.rst][2])
+####1) you can use "qgis:creategrid" in Processing as in the "Hex grid from layer bounds" in Scripts/Example scripts. (look at [Processing-Help / qgis / creategrid.rst][2])
 
 rectangular grid
   
@@ -36,7 +36,7 @@ Hexagonal grid
 
 ![enter image description here][4]
 
-###2) You can adapt the script of [ustroetz][5] in [Create a square grid polygon shapefile with python][6]
+####2) You can adapt the script of [ustroetz][5] in [Create a square grid polygon shapefile with python][6]
 
 
 part of my class to create a memory layer limited here to the geometry of Polygons:
@@ -128,7 +128,7 @@ and to go faster, you can even use the gridding functions of numpy
 
 ### no published
 
-or use the Python modules  [shapely][5] and [Fiona][6] without QGIS:
+or use the Python modules  [shapely][8] and [Fiona][9] without QGIS:
 
 ```python
 
@@ -167,3 +167,6 @@ or use the Python modules  [shapely][5] and [Fiona][6] without QGIS:
   [5]: http://gis.stackexchange.com/users/15607/ustroetz
   [6]: http://gis.stackexchange.com/questions/54119/create-a-square-grid-polygon-shapefile-with-python/78030#78030
   [7]: http://i.stack.imgur.com/U825j.jpg
+  [8]: http://gispython.org/shapely/manual.html
+  [9]: http://toblerity.github.com/fiona/manual.html
+  
