@@ -17,12 +17,9 @@ rectangular grid
     width = (input.extent().xMaximum() - input.extent().xMinimum())
     height = (input.extent().yMaximum() - input.extent().yMinimum())
     grid="/yourpath/grid.shp"
-    processing.runalg("qgis:creategrid", cellsize, cellsize, width, height, centerx, centery, 1, input.crs().authid(), grid)
-    vlayer = QgsVectorLayer(grid,"grid", "ogr")
-    QgsMapLayerRegistry.instance().addMapLayer(vlayer)
+    processing.runandload("qgis:creategrid", cellsize, cellsize, width, height, centerx, centery, 1, input.crs().authid(), grid)
 
-```python
-
+```
 
 ![enter image description here][3]
 
@@ -33,7 +30,7 @@ Hexagonal grid
 ```python
 
     ....
-    processing.runalg("qgis:creategrid", cellsize, cellsize, width, height, centerx, centery, 3, input.crs().authid(), grid)
+    processing.runandload("qgis:creategrid", cellsize, cellsize, width, height, centerx, centery, 3, input.crs().authid(), grid)
     
 ```
 
