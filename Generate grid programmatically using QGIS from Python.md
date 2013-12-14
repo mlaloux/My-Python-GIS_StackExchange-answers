@@ -4,7 +4,7 @@ From an existing layer:
 
 ####1) you can use processing  with the algorithm "qgis:creategrid" as in the "Hex grid from layer bounds" in Processing/Scripts/Example scripts. (look at [Processing-Help / qgis / creategrid.rst][2])
 
-rectangular grid
+squared grid
 
 ```python
 
@@ -23,6 +23,18 @@ rectangular grid
 
 ![enter image description here][3]
 
+rectangular grid
+
+```python
+    .....
+    cellsizex = 500
+    cellsizey = 1000
+    .....
+    processing.runandload("qgis:creategrid", cellsizex, cellsizey, width, height, centerx, centery, 1, input.crs().authid(), grid)
+    
+```
+![enter image description here][4]
+
 For other types of grids change the value in runalg (1,...,3, ...):
 
 Hexagonal grid
@@ -34,7 +46,7 @@ Hexagonal grid
     
 ```
 
-![enter image description here][4]
+![enter image description here][5]
 
 ####2) You can adapt the script of [ustroetz][5] in [Create a square grid polygon shapefile with python][6]
 
@@ -96,7 +108,7 @@ The script to create a squared grid layer from an existing layer:
      
 Result:
 
-![enter image description here][7]
+![enter image description here][8]
 
 
 But you can modify the script using numpy in place of math ceil and int
@@ -128,7 +140,7 @@ and to go faster, you can even use the gridding functions of numpy
 
 ### no published
 
-or use the Python modules  [shapely][8] and [Fiona][9] without QGIS:
+or use the Python modules  [shapely][9] and [Fiona][10] without QGIS:
 
 ```python
 
@@ -159,14 +171,14 @@ or use the Python modules  [shapely][8] and [Fiona][9] without QGIS:
 
  ```
 
-
- [1]: http://i.stack.imgur.com/13iuc.jpg
+  [1]: http://i.stack.imgur.com/13iuc.jpg
   [2]: https://github.com/alexbruy/Processing-Help/blob/master/qgis/creategrid.rst
   [3]: http://i.stack.imgur.com/w0Z6F.jpg
-  [4]: http://i.stack.imgur.com/SbLuu.jpg
-  [5]: http://gis.stackexchange.com/users/15607/ustroetz
-  [6]: http://gis.stackexchange.com/questions/54119/create-a-square-grid-polygon-shapefile-with-python/78030#78030
-  [7]: http://i.stack.imgur.com/U825j.jpg
-  [8]: http://gispython.org/shapely/manual.html
-  [9]: http://toblerity.github.com/fiona/manual.html
+  [4]: http://i.stack.imgur.com/MyEk4.jpg
+  [5]: http://i.stack.imgur.com/SbLuu.jpg
+  [6]: http://gis.stackexchange.com/users/15607/ustroetz
+  [7]: http://gis.stackexchange.com/questions/54119/create-a-square-grid-polygon-shapefile-with-python/78030#78030
+  [8]: http://i.stack.imgur.com/U825j.jpg
+  [9]: http://gispython.org/shapely/manual.html
+  [10]: http://toblerity.github.com/fiona/manual.html
   
