@@ -2,24 +2,27 @@ From an existing layer:
 
 ![enter image description here][1]
 
-####1) you can use "qgis:creategrid" in Processing as in the "Hex grid from layer bounds" in Scripts/Example scripts. (look at [Processing-Help / qgis / creategrid.rst][2])
+####1) you can use processing  with the algorithm "qgis:creategrid" as in the "Hex grid from layer bounds" in Processing/Scripts/Example scripts. (look at [Processing-Help / qgis / creategrid.rst][2])
 
 rectangular grid
-  
+
 ```python
 
-    ##[Example scripts]=group
-    ##input=vector
-    ##cellsize=number 1000.0
-    ##grid=output vector
-    input = processing.getobject(input)
+
+    import processing
+    layer = canvas.layer(0)
+    input = processing.getobject(layer.name())
     centerx = (input.extent().xMinimum() + input.extent().xMaximum()) / 2
     centery = (input.extent().yMinimum() + input.extent().yMaximum()) / 2
     width = (input.extent().xMaximum() - input.extent().xMinimum())
     height = (input.extent().yMaximum() - input.extent().yMinimum())
+    grid="/yourpath/grid.shp"
     processing.runalg("qgis:creategrid", cellsize, cellsize, width, height, centerx, centery, 1, input.crs().authid(), grid)
-    
-```
+    vlayer = QgsVectorLayer(grid,"grid", "ogr")
+    QgsMapLayerRegistry.instance().addMapLayer(vlayer)
+
+```python
+
 
 ![enter image description here][3]
 
