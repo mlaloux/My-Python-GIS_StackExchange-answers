@@ -1,3 +1,17 @@
+from [Shapely-Finding differences between two shapefiles](http://gis.stackexchange.com/questions/80090/finding-differences-between-two-shapefiles-in-python/80524#80524)
+
+from [Creating Shapely MultiPolygons from shape file MultiPolygons](http://gis.stackexchange.com/questions/70591/creating-shapely-multipolygons-from-shape-file-multipolygons/70608)
+
+You can use the shape function of Shapely:
+
+```python
+    from shapely.geometry import shape
+    c = fiona.open('data/boroughs/boroughs_n.shp')
+    pol = c.next()
+    geom = shape(pol['geometry'])
+ 
+ ```
+
 Suppose we have two polygons (green and blue):
 
 ![enter image description here][1]
