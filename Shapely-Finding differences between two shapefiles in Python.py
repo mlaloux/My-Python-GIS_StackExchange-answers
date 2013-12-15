@@ -53,7 +53,7 @@ and the distance:
     point1.distance(point2)
 ```
 
-###New : compare multiple polygons:
+##new : compare multiple polygons:
 
 Here is one solution:  
 For that, I use [Fiona][6] to open the polygon shapefiles and save a resulting shapefile with differences:
@@ -98,7 +98,7 @@ For that, I use [Fiona][6] to open the polygon shapefiles and save a resulting s
 
 ```
 
-Result:
+Result: aaaa
 
 ![enter image description here][8]
 
