@@ -88,7 +88,7 @@ For that, I use [Fiona][6] to open the polygon shapefiles and save a resulting s
     GEOMETRYCOLLECTION EMPTY
     GEOMETRYCOLLECTION EMPTY
     GEOMETRYCOLLECTION EMPTY
-    # write a resulting shapefile
+    # thus you can write a resulting shapefile withe the differences
     from shapely.geometry import mapping
     schema = {'geometry': 'Polygon','properties': {'test': 'int'}}
     with fiona.open('diff.shp','w','ESRI Shapefile', schema) as e:
