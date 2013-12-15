@@ -101,7 +101,7 @@ For that, I use [Fiona][6] to open the polygon shapefiles and save a resulting s
 
 ```
 
-Result: aaaa
+Result: 
 
 ![enter image description here][8]
 
