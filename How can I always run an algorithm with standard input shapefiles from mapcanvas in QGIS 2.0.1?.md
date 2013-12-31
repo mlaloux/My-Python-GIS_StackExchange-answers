@@ -19,10 +19,11 @@ Change you script in:
     outputs_2=Processing.runalg("qgis:saveselectedfeatures", outputs_0['OUTPUT'], output_layer_alg2)
     outputs_3=Processing.runalg("qgis:saveselectedfeatures", outputs_1['OUTPUT'], output_layer_alg3)
 
+```
 
 ![enter image description here][1]
 
-``` 
+ 
 
 
   [1]: http://i.stack.imgur.com/qGvWi.jpg
