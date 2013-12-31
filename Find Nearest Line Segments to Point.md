@@ -4,11 +4,11 @@ I have reproduced your example with shapefiles.
 
 You can use [Shapely][1] and [Fiona][2] to solve your problem.
 
-###1) Your problem (with a shapely `Point`):
+####1) Your problem (with a shapely `Point`):
 
 ![enter image description here][3]
 
-###2) starting with an arbitrary line (with an adequate length):
+####2) starting with an arbitrary line (with an adequate length):
 
 
 ```python
@@ -20,7 +20,7 @@ You can use [Shapely][1] and [Fiona][2] to solve your problem.
 
 ![enter image description here][4]
 
-###3) using [shapely.affinity.rotate][5] to create the radii (rotating the line from the point, look also the [Mike Toews][6]'s answer at [Python, shapely library: is it possible to do an affine operation on shape polygon?][7]):
+####3) using [shapely.affinity.rotate][5] to create the radii (rotating the line from the point, look also the [Mike Toews][6]'s answer at [Python, shapely library: is it possible to do an affine operation on shape polygon?][7]):
 
 
 ```python
@@ -34,7 +34,7 @@ You can use [Shapely][1] and [Fiona][2] to solve your problem.
 
 ![enter image description here][8]
 
-###4) now, using [shapely:cascaded_union][9] (or [shapely:unary_union][10]) to get a MultiLineString:
+####4) now, using [shapely:cascaded_union][9] (or [shapely:unary_union][10]) to get a MultiLineString:
 
 <!-- language: lang-py -->
 
@@ -44,7 +44,7 @@ You can use [Shapely][1] and [Fiona][2] to solve your problem.
     MultiLineString
     
 
-###5) the same with the original lines (shapefile)
+####5) the same with the original lines (shapefile)
 
 
 ```python
@@ -59,7 +59,7 @@ You can use [Shapely][1] and [Fiona][2] to solve your problem.
 
 ```
 
-###6) the intersection between the two multigeometries is computed and the result is saved to a shapefile:
+####6) the intersection between the two multigeometries is computed and the result is saved to a shapefile:
 
 
 ```python
@@ -78,11 +78,11 @@ Result:
 
 ![enter image description here][11]
 
-###7) but, problem, if you use a a longer radius, the result is different:
+####7) but, problem, if you use a a longer radius, the result is different:
 
 ![enter image description here][12]
 
-###8) And if you want to get your result, you need to select only the point with the shortest distance from the original point on a radius: 
+####8) And if you want to get your result, you need to select only the point with the shortest distance from the original point on a radius: 
 
 
 ```python
