@@ -6,7 +6,7 @@ To know the available functions, in the Python console type:
     dir(mylayer)
     # and
     dir(geom)
-
+```
 and one answer is (always in the Python console, slightly different with Processing or for a plugin):
 
 ```python
@@ -24,6 +24,7 @@ and one answer is (always in the Python console, slightly different with Process
           atr = dict(zip(field_names, feature.attributes()))
           print atr
           print atr['dip_direct']
+```
 
 Result with one of my shapefiles
 
